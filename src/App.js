@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import CreateTodo from "./components/create-blog.component";
 import EditTodo from "./components/edit-todo.component";
-import CreateBlog from "./components/todos-list.component";
+import BlogsList from "./components/blogs-list.component";
 
 import logo from "./bb.svg";
 
@@ -40,7 +40,7 @@ class App extends Component {
             </div>
           </nav>
 
-          <Route path="/" exact component={CreateBlog} />
+          <Route path="/" exact component={BlogsList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
         </div>

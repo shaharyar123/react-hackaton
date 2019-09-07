@@ -89,7 +89,12 @@ export default class CreateBlog extends Component {
           </div>
 
           <div className="form-group">
-            <input type="submit" value="Create" className="btn btn-primary" />
+            <input
+              type="submit"
+              value="Create"
+              disabled={!this.state.blog_title || !this.state.blog_content}
+              className="btn btn-primary"
+            />
           </div>
         </form>
       </div>
