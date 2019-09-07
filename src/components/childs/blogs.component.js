@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 class Blog extends Component {
   render() {
+    const loggedIn = JSON.parse(localStorage.getItem("currentUser"));
+
     const { blog, i, history } = this.props;
     return (
       <div
@@ -35,6 +37,16 @@ class Blog extends Component {
             {blog.blog_content}
           </p>
           Published by : <b> {blog.user.name}</b>
+          {loggedIn && loggedIn.id == blog.userId && (
+            <a
+              style={{
+                float: "right",
+                color: "red"
+              }}
+            >
+              Delete
+            </a>
+          )}
         </div>
       </div>
     );
