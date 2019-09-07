@@ -8,9 +8,11 @@ import BlogsList from "./components/blogs-list.component";
 
 import logo from "./bb.svg";
 import SignupUser from "./components/signup.component";
+import LoginUser from "./components/loginsignup.component";
 
 class App extends Component {
   render() {
+    // const loggedIn = JSON.parse(localStorage.getItem("currentUser"));
     return (
       <Router>
         <div className="container">
@@ -37,11 +39,34 @@ class App extends Component {
                     Create Blog
                   </Link>
                 </li>
-                <li className="navbar-item">
+                {/* {loggedIn && ( */}
+                {/* <li
+                    className="navbar-item"
+                    style={{
+                      float: "right",
+                      position: "absolute",
+                      right: "15px"
+                    }}
+                  >
+                    <Link to="/" className="nav-link">
+                      Logout
+                    </Link>
+                  </li> */}
+                {/* )} */}
+                {/* {!loggedIn && ( */}
+                <li
+                  className="navbar-item"
+                  style={{
+                    float: "right",
+                    position: "absolute",
+                    right: "15px"
+                  }}
+                >
                   <Link to="/signup" className="nav-link">
                     Signup
                   </Link>
                 </li>
+                {/* )} */}
               </ul>
             </div>
           </nav>
@@ -50,6 +75,7 @@ class App extends Component {
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
           <Route path="/signup" component={SignupUser} />
+          <Route path="/login" component={LoginUser} />
         </div>
       </Router>
     );

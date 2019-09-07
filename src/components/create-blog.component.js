@@ -3,15 +3,26 @@ import React, { Component } from "react";
 export default class CreateBlog extends Component {
   constructor(props) {
     super(props);
-
     this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
     this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       blog_title: "",
-      blog_content: ""
+      blog_content: "",
+      user: ""
     };
+  }
+  componentDidMount() {
+    this.start();
+  }
+
+  start() {
+    const loggedIn = JSON.parse(localStorage.getItem("currentUser"));
+    console.log("log", loggedIn);
+    if (!loggedIn) {
+      this.props.history.push("/login");
+    }
   }
 
   onChangeTodoDescription(e) {
@@ -28,17 +39,22 @@ export default class CreateBlog extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    const loggedIn = JSON.parse(localStorage.getItem("currentUser"));
 
     const newBlog = {
       blog_title: this.state.blog_title,
-      blog_content: this.state.blog_content
+      blog_content: this.state.blog_content,
+      userId: loggedIn.id
     };
+    console.log(this.state);
+    console.log(this.state.user.id);
 
     this.addNew(newBlog);
 
     this.setState({
       blog_title: "",
-      blog_content: ""
+      blog_content: "",
+      user: ""
     });
     this.props.history.push("/");
     alert("Successfully Created");
@@ -47,7 +63,7 @@ export default class CreateBlog extends Component {
   addNew(newBlog) {
     console.log("newBlog", newBlog);
 
-    var blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+    const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
     // console.log("# of users: " + users.length);
     // users.forEach(function(user, index) {
     //     console.log("[" + index + "]: " + user.id);

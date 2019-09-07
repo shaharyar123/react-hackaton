@@ -2,26 +2,18 @@ import React, { Component } from "react";
 import uuid from "uuid";
 import { Link } from "react-router-dom";
 
-export default class SignupUser extends Component {
+export default class LoginUser extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeName = this.onChangeName.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       email: "",
-      password: "",
-      name: ""
+      password: ""
     };
-  }
-
-  onChangeName(e) {
-    this.setState({
-      name: e.target.value
-    });
   }
 
   onChangeEmail(e) {
@@ -38,47 +30,31 @@ export default class SignupUser extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
 
-    const newBlog = {
-      name: this.state.name,
-      password: this.state.password,
-      email: this.state.email,
-      id: uuid.v4()
-    };
-
-    this.addNew(newBlog);
+    const user = users.find(
+      user =>
+        user.email === this.state.email && user.password === this.state.password
+    );
+    if (!user) {
+      alert("User does not exist");
+      return;
+    }
+    localStorage.setItem("currentUser", JSON.stringify(user));
 
     this.setState({
-      name: "",
-      password: "",
-      email: ""
+      email: "",
+      password: ""
     });
-    // this.props.history.push("/");
-    alert("Successfully Created");
-  }
 
-  addNew(user) {
-    let users = JSON.parse(localStorage.getItem("users") || "[]");
-    users.push(user);
-    // Saving
-    localStorage.setItem("users", JSON.stringify(users));
-    localStorage.setItem("currentUser", JSON.stringify(user));
+    this.props.history.push("/create");
   }
 
   render() {
     return (
       <div style={{ marginTop: 20 }}>
-        <h3>New to Blog Stop? </h3>
+        <h3>Log In? </h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label>Name: </label>
-            <input
-              type="text"
-              className="form-control"
-              value={this.state.name}
-              onChange={this.onChangeName}
-            />
-          </div>
           <div className="form-group">
             <label>Email: </label>
             <input
@@ -102,15 +78,13 @@ export default class SignupUser extends Component {
             <input
               type="submit"
               value="Create"
-              disabled={
-                !this.state.name || !this.state.email || !this.state.password
-              }
+              disabled={!this.state.email || !this.state.password}
               className="btn btn-primary"
             />
           </div>
 
           <div>
-            Already a user ? <Link to={"/login"}>Login</Link>
+            new user ? <Link to={"/signup"}>SignUp</Link>
           </div>
         </form>
       </div>
