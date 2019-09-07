@@ -7,6 +7,7 @@ import EditTodo from "./components/edit-todo.component";
 import BlogsList from "./components/blogs-list.component";
 
 import logo from "./bb.svg";
+import SignupUser from "./components/signup.component";
 
 class App extends Component {
   render() {
@@ -36,6 +37,11 @@ class App extends Component {
                     Create Blog
                   </Link>
                 </li>
+                <li className="navbar-item">
+                  <Link to="/signup" className="nav-link">
+                    Signup
+                  </Link>
+                </li>
               </ul>
             </div>
           </nav>
@@ -43,6 +49,7 @@ class App extends Component {
           <Route path="/" exact component={BlogsList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
+          <Route path="/signup" component={SignupUser} />
         </div>
       </Router>
     );
