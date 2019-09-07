@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import uuid from "uuid";
 
 export default class CreateBlog extends Component {
   constructor(props) {
@@ -44,7 +45,8 @@ export default class CreateBlog extends Component {
     const newBlog = {
       blog_title: this.state.blog_title,
       blog_content: this.state.blog_content,
-      userId: loggedIn.id
+      userId: loggedIn.id,
+      id: uuid.v4()
     };
     console.log(this.state);
     console.log(this.state.user.id);

@@ -6,6 +6,11 @@ export default class SignupUser extends Component {
   constructor(props) {
     super(props);
 
+    const loggedIn = JSON.parse(localStorage.getItem("currentUser"));
+    console.log("log", loggedIn);
+    if (loggedIn) {
+      this.props.history.push("/");
+    }
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);

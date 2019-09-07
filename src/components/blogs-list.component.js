@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Blog from "./childs/blogs.component";
 {
   /* <Link to={"/edit/" + props.todo._id}>Edit</Link> */
 }
@@ -29,39 +29,17 @@ export default class BlogsList extends Component {
   render() {
     return (
       <div>
-        <h2>Blogs</h2>
+        <h2
+          style={{
+            margin: "20px 0px",
+            textAlign: "center"
+          }}
+        >
+          All that Blog Stop Caught!
+        </h2>
 
         {this.state.blogs.map((blog, i) => (
-          <div
-            key={i}
-            className="card"
-            style={{
-              width: "48%",
-              float: "left",
-              margin: "10px 3px"
-            }}
-          >
-            <img
-              src="https://static.pexels.com/photos/296886/pexels-photo-296886.jpeg"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h3>{blog.blog_title}</h3>
-              <p
-                style={{
-                  whiteSpace: "nowrap",
-                  width: "100%",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis"
-                }}
-                className="card-text"
-              >
-                {blog.blog_content}
-              </p>
-              Published by : <b> {blog.user.name}</b>
-            </div>
-          </div>
+          <Blog key={i} i={i} blog={blog} history={this.props.history}></Blog>
         ))}
       </div>
     );

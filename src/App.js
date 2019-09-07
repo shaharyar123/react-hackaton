@@ -9,6 +9,7 @@ import BlogsList from "./components/blogs-list.component";
 import logo from "./bb.svg";
 import SignupUser from "./components/signup.component";
 import LoginUser from "./components/loginsignup.component";
+import ViewBlog from "./components/view-blog.component";
 
 class App extends Component {
   render() {
@@ -72,7 +73,8 @@ class App extends Component {
           </nav>
 
           <Route path="/" exact component={BlogsList} />
-          <Route path="/edit/:id" component={EditTodo} />
+          {/* <Route path="/edit/:id" component={EditTodo} /> */}
+          <Route path="/view/:id" component={ViewBlog} />
           <Route path="/create" component={CreateTodo} />
           <Route path="/signup" component={SignupUser} />
           <Route path="/login" component={LoginUser} />
