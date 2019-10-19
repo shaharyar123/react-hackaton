@@ -43,6 +43,11 @@ export default class SignupUser extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    
+    if(!this.state.email.includes('@')){
+      alert("invalid email");
+      return 
+    }
 
     const newBlog = {
       name: this.state.name,
