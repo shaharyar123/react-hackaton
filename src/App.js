@@ -12,8 +12,14 @@ import LoginUser from "./components/loginsignup.component";
 import ViewBlog from "./components/view-blog.component";
 
 class App extends Component {
+
+  logout(){
+    console.log("working...")
+    localStorage.clear();
+    window.reload();
+  }
   render() {
-    // const loggedIn = JSON.parse(localStorage.getItem("currentUser"));
+    const loggedIn = JSON.parse(localStorage.getItem("currentUser"));
     return (
       <Router>
         <React.Fragment>
@@ -40,8 +46,8 @@ class App extends Component {
                       Create Blog
                     </Link>
                   </li>
-                  {/* {loggedIn && ( */}
-                  {/* <li
+                  { loggedIn && ( 
+                  <li
                       className="navbar-item"
                       style={{
                         float: "right",
@@ -49,12 +55,13 @@ class App extends Component {
                         right: "15px"
                       }}
                     >
-                      <Link to="/" className="nav-link">
+                      <div onClick={() => { this.logout.bind(this) }} className="nav-link">
                         Logout
-                      </Link>
-                    </li> */}
-                  {/* )} */}
-                  {/* {!loggedIn && ( */}
+                      </div>
+                    </li>
+                   )} 
+
+                  {!loggedIn && ( 
                   <li
                     className="navbar-item"
                     style={{
@@ -67,7 +74,7 @@ class App extends Component {
                       Signup
                     </Link>
                   </li>
-                  {/* )} */}
+                   )} 
                 </ul>
               </div>
             </nav>
