@@ -10,7 +10,6 @@ export default class BlogsList extends Component {
   }
 
   componentDidMount() {
-    // const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
     const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
     const users = JSON.parse(localStorage.getItem("users") || "[]");
     this.setState({
@@ -21,10 +20,9 @@ export default class BlogsList extends Component {
         })
         .filter(blog => blog.user)
     });
-    console.log("blogs", blogs);
   }
 
-  componentDidUpdate() {}
+  componentDidUpdate() { }
 
   render() {
     return (
