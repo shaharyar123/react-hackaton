@@ -50,7 +50,7 @@ class App extends Component {
                   }}
                 >
                   <Link to="/signup" className="nav-link">
-                    Signup
+                    Sign up
                     </Link>
                 </li>
                 {/* )} */}
