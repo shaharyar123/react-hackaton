@@ -48,6 +48,12 @@ export default class SignupUser extends Component {
       alert("invalid email");
       return
     }
+    const emailRegex = new RegExp('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}$');
+    const isemailOk = emailRegex.test(this.state.email);
+    if (!isemailOk) {
+      alert("invalid email");
+      return
+    }
 
     const newBlog = {
       name: this.state.name,
@@ -63,6 +69,9 @@ export default class SignupUser extends Component {
       password: "",
       email: ""
     });
+
+
+
     // this.props.history.push("/");
     alert("Successfully Created");
     window.location.href = '/';

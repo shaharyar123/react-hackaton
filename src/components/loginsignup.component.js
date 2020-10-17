@@ -40,6 +40,11 @@ export default class LoginUser extends Component {
       alert("invalid email");
       return
     }
+    const isemailOk = emailRegex.test(this.state.email);
+    if (!isemailOk) {
+      alert("invalid email");
+      return
+    }
     else if (!user) {
       alert("User does not exist");
       return;
