@@ -36,9 +36,9 @@ export default class LoginUser extends Component {
       user =>
         user.email === this.state.email && user.password === this.state.password
     );
-    if(!this.state.email.includes('@')){
+    if (!this.state.email.includes('@')) {
       alert("invalid email");
-      return 
+      return
     }
     else if (!user) {
       alert("User does not exist");
@@ -88,7 +88,7 @@ export default class LoginUser extends Component {
           </div>
 
           <div>
-            new user ? <Link to={"/signup"}>SignUp</Link>
+            Are you a new user? <Link to={"/signup"}>Sign-up now</Link>
           </div>
         </form>
       </div>
