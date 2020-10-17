@@ -1,4 +1,4 @@
-This project is bootstrapped Blogging App
+This project is bootstrapped Blogging App , make it user firendly blogging app for the bigners to understand how react works
 
 ## Available Scripts
 
