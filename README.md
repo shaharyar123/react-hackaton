@@ -1,4 +1,5 @@
-This project is bootstrapped Blogging App , make it user firendly blogging app for the bigners to understand how react works
+This project is react based bootstrapped Blogging App , 
+contribute to make it user firendly, easyto understand blogging app for the bigners to understand how react works
 
 ## Available Scripts
 
