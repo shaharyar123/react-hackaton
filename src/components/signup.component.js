@@ -43,10 +43,10 @@ export default class SignupUser extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    
-    if(!this.state.email.includes('@')){
+
+    if (!this.state.email.includes('@')) {
       alert("invalid email");
-      return 
+      return
     }
 
     const newBlog = {
@@ -65,6 +65,7 @@ export default class SignupUser extends Component {
     });
     // this.props.history.push("/");
     alert("Successfully Created");
+    window.location.href = '/';
   }
 
   addNew(user) {
